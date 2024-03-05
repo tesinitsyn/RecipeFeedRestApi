@@ -61,6 +61,4 @@ public class RecipeController {
         recipeCRUDOperationsService.deleteAllRecipes();
         return ResponseEntity.noContent().build();
     }
-
-
 }
