@@ -12,8 +12,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/recipe")
 public class RecipeController {
-    private final RecipeCRUDOperationsService recipeCRUDOperationsService;
 
+    private final RecipeCRUDOperationsService recipeCRUDOperationsService;
 
     public RecipeController(RecipeCRUDOperationsService recipeCRUDOperationsService) {
         this.recipeCRUDOperationsService = recipeCRUDOperationsService;
