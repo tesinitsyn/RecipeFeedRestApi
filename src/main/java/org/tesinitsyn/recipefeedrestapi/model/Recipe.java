@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "recipes")
 @Getter
@@ -30,4 +32,16 @@ public class Recipe {
     @Column(name = "recipe_rating")
     private float recipeRating;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return Objects.equals(id, recipe.id) && Objects.equals(recipeName, recipe.recipeName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, recipeName);
+    }
 }
