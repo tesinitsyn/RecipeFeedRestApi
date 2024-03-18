@@ -26,7 +26,7 @@ public class RecipeController {
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<Recipe> getRecipeById(@PathVariable Long id) {
+    public ResponseEntity<Recipe> getRecipeById(@PathVariable Integer id) {
         Optional<Recipe> recipeOptional = recipeCRUDOperationsService.getRecipeById(id);
         return recipeOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -40,7 +40,7 @@ public class RecipeController {
 
 
     @PutMapping("/updateRecipe/{id}")
-    public ResponseEntity<Recipe> updateRecipe(@PathVariable Long id, @RequestBody Recipe recipe) {
+    public ResponseEntity<Recipe> updateRecipe(@PathVariable Integer id, @RequestBody Recipe recipe) {
         Recipe updatedRecipe = recipeCRUDOperationsService.updateRecipe(id, recipe);
         if (updatedRecipe != null) {
             return ResponseEntity.ok(updatedRecipe);
@@ -51,7 +51,7 @@ public class RecipeController {
     }
 
     @DeleteMapping("deleteRecipe/{id}")
-    public ResponseEntity<Void> deleteRecipe(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRecipe(@PathVariable Integer id) {
         recipeCRUDOperationsService.deleteRecipe(id);
         return ResponseEntity.noContent().build();
     }

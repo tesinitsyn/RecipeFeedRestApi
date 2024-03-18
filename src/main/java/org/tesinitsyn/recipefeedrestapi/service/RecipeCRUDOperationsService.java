@@ -19,7 +19,7 @@ public class RecipeCRUDOperationsService {
         return recipeRepository.findAll();
     }
 
-    public Optional<Recipe> getRecipeById(Long id) {
+    public Optional<Recipe> getRecipeById(Integer id) {
         return recipeRepository.findById(id);
     }
 
@@ -27,7 +27,7 @@ public class RecipeCRUDOperationsService {
         return recipeRepository.save(recipe);
     }
 
-    public Recipe updateRecipe(Long id, Recipe recipe) {
+    public Recipe updateRecipe(Integer id, Recipe recipe) {
         Optional<Recipe> recipeOptional = getRecipeById(id);
         if (recipeOptional.isPresent()) {
             Recipe existingRecipe = recipeOptional.get();
@@ -42,7 +42,7 @@ public class RecipeCRUDOperationsService {
         }
     }
 
-    public void deleteRecipe(Long id) {
+    public void deleteRecipe(Integer id) {
         recipeRepository.deleteById(id);
     }
 

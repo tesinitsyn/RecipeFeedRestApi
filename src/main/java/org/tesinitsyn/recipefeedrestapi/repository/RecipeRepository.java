@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.tesinitsyn.recipefeedrestapi.model.Recipe;
 
 @Repository
-public interface RecipeRepository extends JpaRepository<Recipe, Long>{
+public interface RecipeRepository extends JpaRepository<Recipe, Integer>{
 
 }
