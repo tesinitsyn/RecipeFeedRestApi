@@ -21,10 +21,9 @@ public class RecipeController {
 
     //TO-DO: change return type
     @GetMapping("/add100")
-    public ResponseEntity<String> addRecipe(){
+    public List<Recipe> addRecipe(){
         recipeCRUDOperationsService.add100Recipe();
-        return new ResponseEntity<String>("recipes added", HttpStatus.CREATED);
-
+        return recipeCRUDOperationsService.getAllRecipe();
     }
 
 

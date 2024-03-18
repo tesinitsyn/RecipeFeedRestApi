@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.tesinitsyn.recipefeedrestapi.model.Recipe;
 import org.tesinitsyn.recipefeedrestapi.repository.RecipeRepository;
 
-import java.beans.FeatureDescriptor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -63,10 +62,7 @@ public class RecipeCRUDOperationsService {
             Recipe someRecipe = new Recipe(i, faker.food().dish(), faker.food().ingredient(),"Amazing " + faker.food().dish(),timeToCook,rating);
             recipes.add(someRecipe);
         }
-        for(Recipe i : recipes){
-            System.out.println(i.toString());
-        }
-
         recipeRepository.saveAll(recipes);
+        recipeRepository.findAll();
     }
 }
