@@ -19,6 +19,14 @@ public class RecipeController {
         this.recipeCRUDOperationsService = recipeCRUDOperationsService;
     }
 
+    //TO-DO: change return type
+    @GetMapping("/add100")
+    public ResponseEntity<String> addRecipe(){
+        recipeCRUDOperationsService.add100Recipe();
+        return new ResponseEntity<String>("recipes added", HttpStatus.CREATED);
+
+    }
+
 
     @GetMapping("/getAll")
     public List<Recipe> getAllRecipes() {

@@ -7,3 +7,5 @@ CREATE TABLE IF NOT EXISTS recipes
     time_to_cook VARCHAR(20)  NOT NULL,
     recipe_rating numeric(254) NOT NULL
 );
+
+

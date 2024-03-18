@@ -1,9 +1,13 @@
 package org.tesinitsyn.recipefeedrestapi.service;
 
+import com.github.javafaker.Faker;
+import org.apache.commons.math3.random.RandomDataGenerator;
 import org.springframework.stereotype.Service;
 import org.tesinitsyn.recipefeedrestapi.model.Recipe;
 import org.tesinitsyn.recipefeedrestapi.repository.RecipeRepository;
 
+import java.beans.FeatureDescriptor;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,5 +52,21 @@ public class RecipeCRUDOperationsService {
 
     public void deleteAllRecipes() {
         recipeRepository.deleteAll();
+    }
+
+    public void add100Recipe(){
+        List<Recipe> recipes = new ArrayList<>();
+        Faker faker = new Faker();
+        for (int i = 1; i < 100; i++) {
+            String timeToCook =  new RandomDataGenerator().nextInt(1, 200) + "min";
+            Double rating = new RandomDataGenerator().nextInt(1, 5) + 0.0;
+            Recipe someRecipe = new Recipe(i, faker.food().dish(), faker.food().ingredient(),"Amazing " + faker.food().dish(),timeToCook,rating);
+            recipes.add(someRecipe);
+        }
+        for(Recipe i : recipes){
+            System.out.println(i.toString());
+        }
+
+        recipeRepository.saveAll(recipes);
     }
 }

@@ -1,8 +1,7 @@
 package org.tesinitsyn.recipefeedrestapi.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Objects;
 
@@ -10,6 +9,9 @@ import java.util.Objects;
 @Table(name = "recipes")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Recipe {
 
 
@@ -30,7 +32,7 @@ public class Recipe {
     private String timeToCook;
 
     @Column(name = "recipe_rating")
-    private float recipeRating;
+    private Double recipeRating;
 
     @Override
     public boolean equals(Object o) {
@@ -43,5 +45,18 @@ public class Recipe {
     @Override
     public int hashCode() {
         return Objects.hash(id, recipeName);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Recipe{");
+        sb.append("id=").append(id);
+        sb.append(", recipeName='").append(recipeName).append('\'');
+        sb.append(", ingredients='").append(ingredients).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", timeToCook='").append(timeToCook).append('\'');
+        sb.append(", recipeRating=").append(recipeRating);
+        sb.append('}');
+        return sb.toString();
     }
 }
