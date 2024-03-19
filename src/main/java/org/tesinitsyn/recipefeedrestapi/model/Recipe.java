@@ -34,6 +34,9 @@ public class Recipe {
     @Column(name = "recipe_rating")
     private Double recipeRating;
 
+    @Column(name = "image_data")
+    private byte[] imageData;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
