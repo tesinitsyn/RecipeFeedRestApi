@@ -39,7 +39,11 @@ public class RecipeController {
         return recipeOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<?> getRecipeByIdWithImage(@PathVariable Integer id) {
+        Optional<Recipe> recipeOptional = recipeCRUDOperationsService.getRecipeById(id);
+        return recipeOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
     @PostMapping("/addRecipe")
     public ResponseEntity<Recipe> createRecipe(@RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image ) {
