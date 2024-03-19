@@ -3,6 +3,7 @@ package org.tesinitsyn.recipefeedrestapi.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.tesinitsyn.recipefeedrestapi.model.Recipe;
 import org.tesinitsyn.recipefeedrestapi.service.RecipeCRUDOperationsService;
 
@@ -20,11 +21,11 @@ public class RecipeController {
     }
 
     //TO-DO: change return type
-    @GetMapping("/add100")
-    public List<Recipe> addRecipe(){
-        recipeCRUDOperationsService.add100Recipe();
-        return recipeCRUDOperationsService.getAllRecipe();
-    }
+//    @GetMapping("/add100")
+//    public List<Recipe> addRecipe(){
+//        recipeCRUDOperationsService.add100Recipe();
+//        return recipeCRUDOperationsService.getAllRecipe();
+//    }
 
 
     @GetMapping("/getAll")
@@ -38,12 +39,24 @@ public class RecipeController {
         return recipeOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<?> getRecipeByIdWithImage(@PathVariable Integer id) {
+        Optional<Recipe> recipeOptional = recipeCRUDOperationsService.getRecipeById(id);
+        return recipeOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
     @PostMapping("/addRecipe")
-    public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) {
-        Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe);
+    public ResponseEntity<Recipe> createRecipe(@RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image ) {
+
+        Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe, image);
         return ResponseEntity.status(HttpStatus.CREATED).body(createRecipe);
     }
+
+//    @PostMapping("/addRecipe")
+//    public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) {
+//        Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(createRecipe);
+//    }
 
 
     @PutMapping("/updateRecipe/{id}")

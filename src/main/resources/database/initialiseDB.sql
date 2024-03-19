@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS recipes
     ingredients  VARCHAR(200) NOT NULL,
     description VARCHAR(254) NOT NULL,
     time_to_cook VARCHAR(20)  NOT NULL,
-    recipe_rating double precision NOT NULL
+    recipe_rating double precision NOT NULL,
+    image_data bytea
 );
 
 

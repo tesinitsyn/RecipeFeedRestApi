@@ -2,6 +2,7 @@ package org.tesinitsyn.recipefeedrestapi.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import java.util.Objects;
 
@@ -33,6 +34,10 @@ public class Recipe {
 
     @Column(name = "recipe_rating")
     private Double recipeRating;
+
+    @Column(name = "image_data")
+    @Nullable
+    private byte[] imageData;
 
     @Override
     public boolean equals(Object o) {
