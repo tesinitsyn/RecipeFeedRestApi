@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.lang.Nullable;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "recipes")
+@Builder
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Recipe {
@@ -32,8 +33,8 @@ public class Recipe {
     @Column(name = "time_to_cook")
     private String timeToCook;
 
-    @Column(name = "recipe_rating")
-    private Double recipeRating;
+    @Column(name = "recipe_likes")
+    private Integer recipeLikes;
 
     @Column(name = "image_data")
     @Nullable
@@ -60,7 +61,7 @@ public class Recipe {
         sb.append(", ingredients='").append(ingredients).append('\'');
         sb.append(", description='").append(description).append('\'');
         sb.append(", timeToCook='").append(timeToCook).append('\'');
-        sb.append(", recipeRating=").append(recipeRating);
+        sb.append(", recipeRating=").append(recipeLikes);
         sb.append('}');
         return sb.toString();
     }
