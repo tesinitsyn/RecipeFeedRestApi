@@ -52,16 +52,15 @@ public class Recipe {
         return Objects.hash(id, recipeName);
     }
 
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Recipe{");
-        sb.append("id=").append(id);
-        sb.append(", recipeName='").append(recipeName).append('\'');
-        sb.append(", ingredients='").append(ingredients).append('\'');
-        sb.append(", description='").append(description).append('\'');
-        sb.append(", timeToCook='").append(timeToCook).append('\'');
-        sb.append(", recipeRating=").append(recipeLikes);
-        sb.append('}');
-        return sb.toString();
+        return "Recipe{" + "id=" + id +
+                ", recipeName='" + recipeName + '\'' +
+                ", ingredients='" + ingredients + '\'' +
+                ", description='" + description + '\'' +
+                ", timeToCook='" + timeToCook + '\'' +
+                ", recipeLikes=" + recipeLikes +
+                '}';
     }
 }
