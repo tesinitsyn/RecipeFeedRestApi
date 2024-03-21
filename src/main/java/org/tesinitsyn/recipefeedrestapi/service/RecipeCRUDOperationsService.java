@@ -40,7 +40,6 @@ public class RecipeCRUDOperationsService {
                 .description(recipe.getDescription())
                 .timeToCook(recipe.getTimeToCook())
                 .recipeLikes(recipe.getRecipeLikes())
-                //.imageData(ImageUtils.newcompressImage(image.getBytes())).build());
                 .imageData(ImageUtils.newCompressor(image.getBytes())).build());
         return recipeRepository.save(newRecipe);
     }
@@ -81,7 +80,6 @@ public class RecipeCRUDOperationsService {
                     .description( "Amazing " + faker.food().dish())
                     .timeToCook(timeToCook)
                     .recipeLikes(likes)
-                    //.imageData(ImageUtils.compressImage(Files.readAllBytes(newFile.toPath()))).build();
                     .imageData(ImageUtils.newCompressor(Files.readAllBytes(newFile.toPath()))).build();
 
             recipes.add(newRecipe);

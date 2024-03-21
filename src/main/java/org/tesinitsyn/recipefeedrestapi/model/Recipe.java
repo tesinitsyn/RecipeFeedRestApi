@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.lang.Nullable;
 
-import java.util.List;
 import java.util.Objects;
 
 @Entity

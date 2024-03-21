@@ -21,7 +21,6 @@ public class RecipeController {
         this.recipeCRUDOperationsService = recipeCRUDOperationsService;
     }
 
-    //TO-DO: change return type
     @GetMapping("/add100")
     public List<Recipe> addRecipe() throws IOException {
         recipeCRUDOperationsService.add100Recipe();
@@ -46,12 +45,6 @@ public class RecipeController {
         Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe, image);
         return ResponseEntity.status(HttpStatus.CREATED).body(createRecipe);
     }
-
-//    @PostMapping("/addRecipe")
-//    public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) {
-//        Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(createRecipe);
-//    }
 
 
     @PutMapping("/updateRecipe/{id}")
