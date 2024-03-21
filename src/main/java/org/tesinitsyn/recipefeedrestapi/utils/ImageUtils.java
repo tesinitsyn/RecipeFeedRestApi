@@ -2,13 +2,22 @@ package org.tesinitsyn.recipefeedrestapi.utils;
 
 
 import lombok.experimental.UtilityClass;
+import org.apache.commons.io.FileUtils;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.Base64;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 @UtilityClass
 public class ImageUtils {
+
+
+    public static String newCompressor(byte[] data){
+        return Base64.getEncoder().encodeToString(data);
+    }
+
     public static byte[] compressImage(byte[] data) {
         Deflater deflater = new Deflater();
         deflater.setLevel(Deflater.BEST_COMPRESSION);

@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS recipes
     description VARCHAR(254) NOT NULL,
     time_to_cook VARCHAR(20)  NOT NULL,
     recipe_likes BIGSERIAL,
-    image_data bytea
+    image_data text
 );
 
 

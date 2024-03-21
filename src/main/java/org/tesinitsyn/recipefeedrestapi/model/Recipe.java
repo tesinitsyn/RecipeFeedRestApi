@@ -38,7 +38,7 @@ public class Recipe {
 
     @Column(name = "image_data")
     @Nullable
-    private byte[] imageData;
+    private String imageData;
 
     @Override
     public boolean equals(Object o) {
