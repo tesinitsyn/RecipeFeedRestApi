@@ -9,6 +9,9 @@ import org.tesinitsyn.recipefeedrestapi.model.Recipe;
 import org.tesinitsyn.recipefeedrestapi.repository.RecipeRepository;
 import org.tesinitsyn.recipefeedrestapi.utils.ImageUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,8 +39,9 @@ public class RecipeCRUDOperationsService {
                 .ingredients(recipe.getIngredients())
                 .description(recipe.getDescription())
                 .timeToCook(recipe.getTimeToCook())
-                .recipeRating(recipe.getRecipeRating())
-                .imageData(ImageUtils.compressImage(image.getBytes())).build());
+                .recipeLikes(recipe.getRecipeLikes())
+                //.imageData(ImageUtils.newcompressImage(image.getBytes())).build());
+                .imageData(ImageUtils.newCompressor(image.getBytes())).build());
         return recipeRepository.save(newRecipe);
     }
 
@@ -48,7 +52,7 @@ public class RecipeCRUDOperationsService {
             existingRecipe.setIngredients(recipe.getIngredients());
             existingRecipe.setDescription(recipe.getDescription());
             existingRecipe.setTimeToCook(recipe.getTimeToCook());
-            existingRecipe.setRecipeRating(recipe.getRecipeRating());
+            existingRecipe.setRecipeLikes(recipe.getRecipeLikes());
             existingRecipe.setRecipeName(recipe.getRecipeName());
             return recipeRepository.save(existingRecipe);
         } else {
@@ -64,16 +68,25 @@ public class RecipeCRUDOperationsService {
         recipeRepository.deleteAll();
     }
 
-//    public void add100Recipe(){
-//        List<Recipe> recipes = new ArrayList<>();
-//        Faker faker = new Faker();
-//        for (int i = 1; i < 100; i++) {
-//            String timeToCook =  new RandomDataGenerator().nextInt(1, 200) + "min";
-//            Double rating = new RandomDataGenerator().nextInt(1, 5) + 0.0;
-//            Recipe someRecipe = new Recipe(i, faker.food().dish(), faker.food().ingredient(),"Amazing " + faker.food().dish(),timeToCook,rating);
-//            recipes.add(someRecipe);
-//        }
-//        recipeRepository.saveAll(recipes);
-//        recipeRepository.findAll();
-//    }
+    public void add100Recipe() throws IOException {
+        List<Recipe> recipes = new ArrayList<>();
+        File newFile = new File("src/main/resources/image/gettyimages-73319224-1024x1024.jpg");
+        Faker faker = new Faker();
+        for (int i = 1; i < 100; i++) {
+            String timeToCook =  new RandomDataGenerator().nextInt(1, 200) + "min";
+            Integer likes = new RandomDataGenerator().nextInt(1, 1000);
+            Recipe newRecipe = Recipe.builder()
+                    .recipeName(faker.food().dish())
+                    .ingredients(faker.food().ingredient())
+                    .description( "Amazing " + faker.food().dish())
+                    .timeToCook(timeToCook)
+                    .recipeLikes(likes)
+                    //.imageData(ImageUtils.compressImage(Files.readAllBytes(newFile.toPath()))).build();
+                    .imageData(ImageUtils.newCompressor(Files.readAllBytes(newFile.toPath()))).build();
+
+            recipes.add(newRecipe);
+        }
+        recipeRepository.saveAll(recipes);
+        recipeRepository.findAll();
+    }
 }

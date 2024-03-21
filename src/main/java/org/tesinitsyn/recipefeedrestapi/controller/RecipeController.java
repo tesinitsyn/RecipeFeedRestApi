@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.tesinitsyn.recipefeedrestapi.model.Recipe;
 import org.tesinitsyn.recipefeedrestapi.service.RecipeCRUDOperationsService;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,11 +22,11 @@ public class RecipeController {
     }
 
     //TO-DO: change return type
-//    @GetMapping("/add100")
-//    public List<Recipe> addRecipe(){
-//        recipeCRUDOperationsService.add100Recipe();
-//        return recipeCRUDOperationsService.getAllRecipe();
-//    }
+    @GetMapping("/add100")
+    public List<Recipe> addRecipe() throws IOException {
+        recipeCRUDOperationsService.add100Recipe();
+        return recipeCRUDOperationsService.getAllRecipe();
+    }
 
 
     @GetMapping("/getAll")
@@ -40,7 +41,7 @@ public class RecipeController {
     }
 
     @PostMapping("/addRecipe")
-    public ResponseEntity<Recipe> createRecipe(@RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image ) {
+    public ResponseEntity<Recipe> createRecipe(@RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image) {
 
         Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe, image);
         return ResponseEntity.status(HttpStatus.CREATED).body(createRecipe);
