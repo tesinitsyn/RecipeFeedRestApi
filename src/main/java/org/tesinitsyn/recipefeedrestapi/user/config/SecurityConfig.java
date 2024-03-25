@@ -21,6 +21,8 @@ import org.tesinitsyn.recipefeedrestapi.user.service.MyUserDetailsService;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    private MyUserDetailsService myUserDetailsService;
+
     @Bean
     public UserDetailsService userDetailsService() {
         return new MyUserDetailsService();
@@ -29,7 +31,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("api/v1/apps/welcome", "/api/user/new-user").permitAll()
+                .authorizeHttpRequests(auth -> auth.requestMatchers("api/v1/apps/welcome", "/api/user/new-user", "/api/recipe/addRecipe").permitAll()
                         .requestMatchers("api/v1/apps/**").authenticated())
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .build();
