@@ -1,4 +1,4 @@
-package org.tesinitsyn.recipefeedrestapi.model;
+package org.tesinitsyn.recipefeedrestapi.recipe.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -61,6 +61,6 @@ public class Recipe {
                 ", description='" + description + '\'' +
                 ", timeToCook='" + timeToCook + '\'' +
                 ", recipeLikes=" + recipeLikes +
-                '}';
+                '}'; 
     }
 }

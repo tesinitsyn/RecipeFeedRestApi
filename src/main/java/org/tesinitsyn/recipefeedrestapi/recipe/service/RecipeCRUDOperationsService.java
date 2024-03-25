@@ -1,13 +1,13 @@
-package org.tesinitsyn.recipefeedrestapi.service;
+package org.tesinitsyn.recipefeedrestapi.recipe.service;
 
 import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.tesinitsyn.recipefeedrestapi.model.Recipe;
-import org.tesinitsyn.recipefeedrestapi.repository.RecipeRepository;
-import org.tesinitsyn.recipefeedrestapi.utils.ImageUtils;
+import org.tesinitsyn.recipefeedrestapi.recipe.model.Recipe;
+import org.tesinitsyn.recipefeedrestapi.recipe.repository.RecipeRepository;
+import org.tesinitsyn.recipefeedrestapi.recipe.utils.ImageUtils;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.tesinitsyn.recipefeedrestapi.utils;
+package org.tesinitsyn.recipefeedrestapi.recipe.utils;
 
 
 import lombok.experimental.UtilityClass;

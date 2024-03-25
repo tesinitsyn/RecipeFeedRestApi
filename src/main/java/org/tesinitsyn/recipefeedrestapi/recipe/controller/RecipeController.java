@@ -1,11 +1,11 @@
-package org.tesinitsyn.recipefeedrestapi.controller;
+package org.tesinitsyn.recipefeedrestapi.recipe.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.tesinitsyn.recipefeedrestapi.model.Recipe;
-import org.tesinitsyn.recipefeedrestapi.service.RecipeCRUDOperationsService;
+import org.tesinitsyn.recipefeedrestapi.recipe.model.Recipe;
+import org.tesinitsyn.recipefeedrestapi.recipe.service.RecipeCRUDOperationsService;
 
 import java.io.IOException;
 import java.util.List;
