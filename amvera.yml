@@ -7,7 +7,7 @@ meta:
 build:
   artifacts:
     target/*.jar: /
-  args: spring-boot:package
+  args: spring-boot:repackage
 run:
   persistenceMount: /data
   containerPort: 8083
