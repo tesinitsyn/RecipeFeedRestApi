@@ -10,4 +10,4 @@ build:
 run:
   persistenceMount: /data
   containerPort: 8083
-  jarName: RecipeFeedRestApi-0.0.1-SNAPSHOT.jar
+  jarName: RecipeFeedRestApi-0.0.1-SNAPSHOT.jar.original
