@@ -6,7 +6,7 @@ meta:
     version: 17
 build:
   artifacts:
-    build/libs/*.jar: /
+    target/*.jar: /
 run:
   persistenceMount: /data
   containerPort: 8083
