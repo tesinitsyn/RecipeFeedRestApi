@@ -6,8 +6,9 @@ meta:
     version: 17
 build:
   artifacts:
-    build/libs/*.jar: /
+    target/*.jar: /
+  args: spring-boot:repackage
 run:
   persistenceMount: /data
-  containerPort: 8083
+  containerPort: 8080
   jarName: RecipeFeedRestApi-0.0.1-SNAPSHOT.jar
