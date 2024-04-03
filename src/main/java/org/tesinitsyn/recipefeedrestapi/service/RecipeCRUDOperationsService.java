@@ -33,7 +33,7 @@ public class RecipeCRUDOperationsService {
     }
 
     public Optional<List<Recipe>> getRecipesByNameLike(String name){
-        return recipeRepository.findRecipesByRecipeNameLike("%" + name + "%");
+        return recipeRepository.findRecipesByRecipeNameLikeIgnoreCase("%" + name + "%");
     }
 
     public Optional<Recipe> getRecipeById(Integer id) {
