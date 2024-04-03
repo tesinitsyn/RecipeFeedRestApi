@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface RecipeRepository extends JpaRepository<Recipe, Integer>{
     Optional<List<Recipe>> findRecipesByRecipeName(String name);
 
-    Optional<List<Recipe>> findRecipesByRecipeNameLike(String name);
+    Optional<List<Recipe>> findRecipesByRecipeNameLikeIgnoreCase(String name);
 
 
 }
