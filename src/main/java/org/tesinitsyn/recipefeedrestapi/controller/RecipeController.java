@@ -41,8 +41,11 @@ public class RecipeController {
 
     @PostMapping("/addRecipe")
     public ResponseEntity<Recipe> createRecipe(@RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image) {
-
+        System.out.println(recipe);
+        System.out.println(image.getResource());
+        System.out.println(image.getContentType());
         Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe, image);
+        System.out.println("seems fine");
         return ResponseEntity.status(HttpStatus.CREATED).body(createRecipe);
     }
 
