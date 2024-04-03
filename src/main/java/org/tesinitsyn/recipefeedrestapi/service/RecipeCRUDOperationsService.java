@@ -28,6 +28,10 @@ public class RecipeCRUDOperationsService {
         return recipeRepository.findAll();
     }
 
+    public Optional<List<Recipe>> getRecipesByName(String name){
+        return recipeRepository.findRecipesByRecipeName(name);
+    }
+
     public Optional<Recipe> getRecipeById(Integer id) {
         return recipeRepository.findById(id);
     }

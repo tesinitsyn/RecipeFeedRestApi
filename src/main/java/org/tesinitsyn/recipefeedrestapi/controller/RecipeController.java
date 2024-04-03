@@ -28,6 +28,13 @@ public class RecipeController {
     }
 
 
+    @GetMapping("/getByName/{name}")
+    public ResponseEntity<List<Recipe>> getRecipesByName(@PathVariable String name){
+        Optional<List<Recipe>> recipeList = recipeCRUDOperationsService.getRecipesByName(name);
+        return recipeList.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+
     @GetMapping("/getAll")
     public List<Recipe> getAllRecipes() {
         return recipeCRUDOperationsService.getAllRecipe();
@@ -41,8 +48,11 @@ public class RecipeController {
 
     @PostMapping("/addRecipe")
     public ResponseEntity<Recipe> createRecipe(@RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image) {
-
+        System.out.println(recipe);
+        System.out.println(image.getResource());
+        System.out.println(image.getContentType());
         Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe, image);
+        System.out.println("seems fine");
         return ResponseEntity.status(HttpStatus.CREATED).body(createRecipe);
     }
 
