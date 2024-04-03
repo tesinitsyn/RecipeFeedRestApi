@@ -34,6 +34,12 @@ public class RecipeController {
         return recipeList.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/getByNameLike/{name}")
+    public ResponseEntity<List<Recipe>> getRecipesByNameLike(@PathVariable String name){
+        Optional<List<Recipe>> recipeList = recipeCRUDOperationsService.getRecipesByNameLike(name);
+        return recipeList.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 
     @GetMapping("/getAll")
     public List<Recipe> getAllRecipes() {
