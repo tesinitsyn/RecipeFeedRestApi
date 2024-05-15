@@ -13,11 +13,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/recipe")
-public class RecipeController {
+public class CRUDRecipeController {
 
     private final RecipeCRUDOperationsService recipeCRUDOperationsService;
 
-    public RecipeController(RecipeCRUDOperationsService recipeCRUDOperationsService) {
+    public CRUDRecipeController(RecipeCRUDOperationsService recipeCRUDOperationsService) {
         this.recipeCRUDOperationsService = recipeCRUDOperationsService;
     }
 
