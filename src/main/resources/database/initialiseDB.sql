@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS favourite_recipes
 
 CREATE TABLE IF NOT EXISTS expanses
 (
-    id                  BIGINT PRIMARY KEY,
+    id                  BIGSERIAL PRIMARY KEY,
     expanse_name        VARCHAR(255),
     expanse_description TEXT,
     expanse_type        VARCHAR(255),
