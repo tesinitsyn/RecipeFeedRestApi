@@ -12,10 +12,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/expanse/")
-public class ExpanseController {
+public class ExpanseCRUDController {
     private final ExpanseCrudService expanseCrudService;
 
-    public ExpanseController(ExpanseCrudService expanseCrudService) {
+    public ExpanseCRUDController(ExpanseCrudService expanseCrudService) {
         this.expanseCrudService = expanseCrudService;
     }
 

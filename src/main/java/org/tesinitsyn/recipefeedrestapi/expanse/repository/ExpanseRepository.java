@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface ExpanseRepository extends JpaRepository<Expanse, Long> {
     Optional<List<Expanse>> findAllByNameLikeIgnoreCase(String name);
+    List<Expanse> findAllByType(String name);
 }
