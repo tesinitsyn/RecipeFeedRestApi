@@ -1,4 +1,4 @@
-package org.tesinitsyn.recipefeedrestapi;
+package org.tesinitsyn.recipefeedrestapi.expanse.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,6 +1,8 @@
-package org.tesinitsyn.recipefeedrestapi;
+package org.tesinitsyn.recipefeedrestapi.expanse.service;
 
 import org.springframework.stereotype.Service;
+import org.tesinitsyn.recipefeedrestapi.expanse.repository.ExpanseRepository;
+import org.tesinitsyn.recipefeedrestapi.expanse.entity.Expanse;
 
 import java.util.List;
 import java.util.Optional;
