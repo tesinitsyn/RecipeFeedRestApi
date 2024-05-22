@@ -36,4 +36,7 @@ public class ExpanseCRUDController {
         Optional<List<Expanse>> recipeList = expanseCrudService.getExpanseByName(name);
         return recipeList.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+
+
 }
