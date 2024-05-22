@@ -18,8 +18,10 @@ public class UserRecipesService {
         this.userRecipesRepository = userRecipesRepository;
     }
 
-    public List<Recipe> getUserRecipes(Long userId) {
+    
 
+
+    public List<Recipe> getUserRecipes(Long userId) {
         List<UserRecipes> userRecipes = userRecipesRepository.findByUserId(userId).orElse(null);
         List<Recipe> newList = new ArrayList<>();
         assert userRecipes != null;
