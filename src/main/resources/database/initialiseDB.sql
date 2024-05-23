@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS recipes
     description  VARCHAR(254) NOT NULL,
     time_to_cook VARCHAR(20)  NOT NULL,
     recipe_likes BIGSERIAL,
-    image_data   text
+    image_data   text,
+    author  VARCHAR(254) NOT NULL
 );
 
 
@@ -16,14 +17,6 @@ CREATE TABLE IF NOT EXISTS users
     email    VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255)        NOT NULL,
     role     VARCHAR(255)        NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS user_recipes
-(
-    id BIGINT,
-    user_id   BIGINT REFERENCES users (id),
-    recipe_id BIGINT REFERENCES recipes (id),
-    PRIMARY KEY (id, user_id, recipe_id)
 );
 
 CREATE TABLE IF NOT EXISTS favourite_recipes
