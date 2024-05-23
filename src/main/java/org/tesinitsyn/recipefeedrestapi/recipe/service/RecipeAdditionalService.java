@@ -4,6 +4,7 @@ package org.tesinitsyn.recipefeedrestapi.recipe.service;
 import org.springframework.stereotype.Service;
 import org.tesinitsyn.recipefeedrestapi.auth.utils.JWTUtils;
 import org.tesinitsyn.recipefeedrestapi.recipe.model.Recipe;
+import org.tesinitsyn.recipefeedrestapi.recipe.repository.FavouriteRecipesRepository;
 import org.tesinitsyn.recipefeedrestapi.recipe.repository.RecipeRepository;
 
 import java.util.List;
@@ -15,9 +16,9 @@ public class RecipeAdditionalService {
     RecipeRepository recipeRepository;
     JWTUtils jwtUtils;
 
-    public RecipeAdditionalService(RecipeRepository recipeRepository) {
+    public RecipeAdditionalService(RecipeRepository recipeRepository, JWTUtils jwtUtils, FavouriteRecipesRepository favouriteRecipesRepository) {
         this.recipeRepository = recipeRepository;
-        this.jwtUtils = new JWTUtils();
+        this.jwtUtils = jwtUtils;
     }
 
 

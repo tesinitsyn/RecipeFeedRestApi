@@ -47,7 +47,7 @@ public class RecipeCRUDOperationsService {
     public Recipe createRecipe(Recipe recipe, MultipartFile image, String authorisationHeader) {
 
         String author = jwtUtils.extractUsername(authorisationHeader.substring(7));
-        Recipe newRecipe = recipeRepository.save(Recipe.builder()
+        return recipeRepository.save(Recipe.builder()
                 .recipeName(recipe.getRecipeName())
                 .ingredients(recipe.getIngredients())
                 .description(recipe.getDescription())
@@ -55,7 +55,6 @@ public class RecipeCRUDOperationsService {
                 .recipeLikes(recipe.getRecipeLikes())
                 .imageData(ImageUtils.newCompressor(image.getBytes()))
                 .author(author).build());
-        return recipeRepository.save(newRecipe);
     }
 
     public Recipe updateRecipe(Integer id, Recipe recipe) {

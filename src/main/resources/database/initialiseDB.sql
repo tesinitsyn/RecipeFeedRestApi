@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS favourite_recipes
 (
     id BIGSERIAl,
-    username   VARCHAR REFERENCES users (email),
+    username   VARCHAR NOT NULL,
     recipe_id BIGINT REFERENCES recipes (id),
     PRIMARY KEY (id, username, recipe_id)
 );

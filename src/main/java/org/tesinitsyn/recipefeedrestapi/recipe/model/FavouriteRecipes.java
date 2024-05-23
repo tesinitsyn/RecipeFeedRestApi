@@ -16,9 +16,8 @@ public class FavouriteRecipes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "author")
-    private Recipe author;
+    @Column(name = "username")
+    private String username;
 
     @ManyToOne
     @JoinColumn(name = "recipe_id")
