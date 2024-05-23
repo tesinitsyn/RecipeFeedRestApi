@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS recipes
     description  VARCHAR(254) NOT NULL,
     time_to_cook VARCHAR(20)  NOT NULL,
     recipe_likes BIGSERIAL,
-    image_data   text
+    image_data   text,
+    author  VARCHAR(254) NOT NULL
 );
 
 
@@ -18,19 +19,12 @@ CREATE TABLE IF NOT EXISTS users
     role     VARCHAR(255)        NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS user_recipes
-(
-    id BIGINT,
-    user_id   BIGINT REFERENCES users (id),
-    recipe_id BIGINT REFERENCES recipes (id),
-    PRIMARY KEY (id, user_id, recipe_id)
-);
-
 CREATE TABLE IF NOT EXISTS favourite_recipes
 (
-    user_id   BIGINT REFERENCES users (id),
+    id BIGSERIAl,
+    username   VARCHAR NOT NULL,
     recipe_id BIGINT REFERENCES recipes (id),
-    PRIMARY KEY (user_id, recipe_id)
+    PRIMARY KEY (id, username, recipe_id)
 );
 
 CREATE TABLE IF NOT EXISTS expanses

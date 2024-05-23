@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.tesinitsyn.recipefeedrestapi.auth.utils.JWTUtils;
 import org.tesinitsyn.recipefeedrestapi.recipe.model.Recipe;
 import org.tesinitsyn.recipefeedrestapi.recipe.repository.RecipeRepository;
 import org.tesinitsyn.recipefeedrestapi.recipe.utils.ImageUtils;
@@ -19,9 +20,11 @@ import java.util.Optional;
 @Service
 public class RecipeCRUDOperationsService {
     private final RecipeRepository recipeRepository;
+    private final JWTUtils jwtUtils;
 
     public RecipeCRUDOperationsService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
+        this.jwtUtils = new JWTUtils();
     }
 
     public List<Recipe> getAllRecipe() {
@@ -41,18 +44,20 @@ public class RecipeCRUDOperationsService {
     }
 
     @SneakyThrows
-    public Recipe createRecipe(Recipe recipe, MultipartFile image) {
-        Recipe newRecipe = recipeRepository.save(Recipe.builder()
+    public Recipe createRecipe(Recipe recipe, MultipartFile image, String authorisationHeader) {
+
+        String author = jwtUtils.extractUsername(authorisationHeader.substring(7));
+        return recipeRepository.save(Recipe.builder()
                 .recipeName(recipe.getRecipeName())
                 .ingredients(recipe.getIngredients())
                 .description(recipe.getDescription())
                 .timeToCook(recipe.getTimeToCook())
                 .recipeLikes(recipe.getRecipeLikes())
-                .imageData(ImageUtils.newCompressor(image.getBytes())).build());
-        return recipeRepository.save(newRecipe);
+                .imageData(ImageUtils.newCompressor(image.getBytes()))
+                .author(author).build());
     }
 
-    public Recipe updateRecipe(Integer id, Recipe recipe) {
+    public Recipe updateRecipe(Integer id, Recipe recipe, MultipartFile image) throws IOException {
         Optional<Recipe> recipeOptional = getRecipeById(id);
         if (recipeOptional.isPresent()) {
             Recipe existingRecipe = recipeOptional.get();
@@ -61,6 +66,8 @@ public class RecipeCRUDOperationsService {
             existingRecipe.setTimeToCook(recipe.getTimeToCook());
             existingRecipe.setRecipeLikes(recipe.getRecipeLikes());
             existingRecipe.setRecipeName(recipe.getRecipeName());
+            existingRecipe.setImageData(ImageUtils.newCompressor(image.getBytes()));
+            existingRecipe.setAuthor(recipe.getAuthor());
             return recipeRepository.save(existingRecipe);
         } else {
             return null;
