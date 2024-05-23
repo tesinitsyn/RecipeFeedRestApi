@@ -21,10 +21,10 @@ CREATE TABLE IF NOT EXISTS users
 
 CREATE TABLE IF NOT EXISTS favourite_recipes
 (
-
+    id BIGSERIAl,
     username   VARCHAR REFERENCES users (email),
     recipe_id BIGINT REFERENCES recipes (id),
-    PRIMARY KEY (username, recipe_id)
+    PRIMARY KEY (id, username, recipe_id)
 );
 
 CREATE TABLE IF NOT EXISTS expanses
