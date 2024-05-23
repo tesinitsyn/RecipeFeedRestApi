@@ -42,8 +42,7 @@ public class CRUDRecipeController {
 
 
     @GetMapping("/getAll")
-    public List<Recipe> getAllRecipes(@RequestHeader(value = "Authorization", required = false) String authorizationHeader) {
-        System.out.println(authorizationHeader);
+    public List<Recipe> getAllRecipes() {
         return recipeCRUDOperationsService.getAllRecipe();
     }
 

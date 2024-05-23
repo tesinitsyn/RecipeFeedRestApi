@@ -47,7 +47,6 @@ public class RecipeCRUDOperationsService {
     public Recipe createRecipe(Recipe recipe, MultipartFile image, String authorisationHeader) {
 
         String author = jwtUtils.extractUsername(authorisationHeader.substring(7));
-        System.out.println(author);
         Recipe newRecipe = recipeRepository.save(Recipe.builder()
                 .recipeName(recipe.getRecipeName())
                 .ingredients(recipe.getIngredients())
