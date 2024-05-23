@@ -22,4 +22,8 @@ public class RecipeAdditionalService {
         Random rand = new Random();
         return recipes.get(rand.nextInt(recipes.size()));
     }
+
+//    public List<Recipe> getUserRecipes() {
+//        List<Recipe> recipes = recipeRepository.findAll();
+//    }
 }

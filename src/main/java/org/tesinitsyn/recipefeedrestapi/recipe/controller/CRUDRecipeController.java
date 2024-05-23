@@ -42,7 +42,8 @@ public class CRUDRecipeController {
 
 
     @GetMapping("/getAll")
-    public List<Recipe> getAllRecipes() {
+    public List<Recipe> getAllRecipes(@RequestHeader(value = "Authorization", required = false) String authorizationHeader) {
+        System.out.println(authorizationHeader);
         return recipeCRUDOperationsService.getAllRecipe();
     }
 
@@ -53,12 +54,9 @@ public class CRUDRecipeController {
     }
 
     @PostMapping("/addRecipe")
-    public ResponseEntity<Recipe> createRecipe(@RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image) {
-        System.out.println(recipe);
-        System.out.println(image.getResource());
-        System.out.println(image.getContentType());
-        Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe, image);
-        System.out.println("seems fine");
+    public ResponseEntity<Recipe> createRecipe(@RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image,
+                                               @RequestHeader(value = "Authorization", required = false) String authorizationHeader) {
+        Recipe createRecipe = recipeCRUDOperationsService.createRecipe(recipe, image, authorizationHeader);
         return ResponseEntity.status(HttpStatus.CREATED).body(createRecipe);
     }
 
