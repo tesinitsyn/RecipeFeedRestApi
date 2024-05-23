@@ -61,8 +61,8 @@ public class CRUDRecipeController {
 
 
     @PutMapping("/updateRecipe/{id}")
-    public ResponseEntity<Recipe> updateRecipe(@PathVariable Integer id, @RequestBody Recipe recipe) {
-        Recipe updatedRecipe = recipeCRUDOperationsService.updateRecipe(id, recipe);
+    public ResponseEntity<Recipe> updateRecipe(@PathVariable Integer id, @RequestPart("data") Recipe recipe, @RequestPart("image") MultipartFile image) throws IOException {
+        Recipe updatedRecipe = recipeCRUDOperationsService.updateRecipe(id, recipe, image);
         if (updatedRecipe != null) {
             return ResponseEntity.ok(updatedRecipe);
         } else {

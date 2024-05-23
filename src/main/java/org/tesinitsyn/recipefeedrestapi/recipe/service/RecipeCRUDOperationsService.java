@@ -57,7 +57,7 @@ public class RecipeCRUDOperationsService {
                 .author(author).build());
     }
 
-    public Recipe updateRecipe(Integer id, Recipe recipe) {
+    public Recipe updateRecipe(Integer id, Recipe recipe, MultipartFile image) throws IOException {
         Optional<Recipe> recipeOptional = getRecipeById(id);
         if (recipeOptional.isPresent()) {
             Recipe existingRecipe = recipeOptional.get();
@@ -66,6 +66,8 @@ public class RecipeCRUDOperationsService {
             existingRecipe.setTimeToCook(recipe.getTimeToCook());
             existingRecipe.setRecipeLikes(recipe.getRecipeLikes());
             existingRecipe.setRecipeName(recipe.getRecipeName());
+            existingRecipe.setImageData(ImageUtils.newCompressor(image.getBytes()));
+            existingRecipe.setAuthor(recipe.getAuthor());
             return recipeRepository.save(existingRecipe);
         } else {
             return null;
