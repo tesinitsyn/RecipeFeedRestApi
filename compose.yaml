@@ -1,17 +1,17 @@
 services:
-#  backend:
-#   image: 'recipesrestapi'
-#   build:
-#    context: .
-#   container_name: 'RecipeFeedRestApi'
-#   depends_on:
-#    - 'database'
-#   environment:
-#    - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/mydatabase'
-#    - 'SPRING_DATASOURCE_USERNAME=myuser'
-#    - 'SPRING_DATASOURCE_PASSWORD=secret'
-#   ports:
-#    - '8080:8080'
+  backend:
+   image: 'recipesrestapi'
+   build:
+    context: .
+   container_name: 'RecipeFeedRestApi'
+   depends_on:
+    - 'database'
+   environment:
+    - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/mydatabase'
+    - 'SPRING_DATASOURCE_USERNAME=myuser'
+    - 'SPRING_DATASOURCE_PASSWORD=secret'
+   ports:
+    - '8080:8080'
   database:
     image: 'postgres:latest'
     container_name: 'PostgresDB'
