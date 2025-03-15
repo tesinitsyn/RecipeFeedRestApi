@@ -21,6 +21,7 @@ public class CRUDRecipeController {
         this.recipeCRUDOperationsService = recipeCRUDOperationsService;
     }
 
+    //test
     @GetMapping("/add100")
     public List<Recipe> addRecipe() throws IOException {
         recipeCRUDOperationsService.add100Recipe();
